@@ -32,13 +32,19 @@ public class Radio {
     public void increaseNumberStation() {
 
         if (currentNumberStation < 9) {
-            currentNumberStation = currentNumberStation + 1;
+            currentNumberStation = currentNumberStation +1;
+        }
+        if (currentNumberStation == 9) {
+            currentNumberStation = 0;
         }
     }
 
     public void decreaseNumberStation() {
         if (currentNumberStation > 0) {
             currentNumberStation = currentNumberStation - 1;
+        }
+        if (currentNumberStation == 0) {
+            currentNumberStation = 9;
         }
     }
 
