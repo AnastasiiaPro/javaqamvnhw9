@@ -1,47 +1,69 @@
 package ru.netology.javaqa;
 
 public class Radio {
-    private int currentVolume;
-    private int currentNumberStation;
+    private int countStation = 10;
+    private int minNumberStation = 0;
+    private int maxNumberStation = 9;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume = minVolume;
+    private int currentNumberStation = minNumberStation;
+
+    public Radio() {
+    }
+
+    public Radio(int countStation) {
+        maxNumberStation = minNumberStation + countStation - 1;
+
+    }
+
+    public int getCountStation() {
+        return countStation;
+    }
+
+    public int getMinNumberStation() {
+        return minNumberStation;
+    }
 
     public int getCurrentNumberStation() {
         return currentNumberStation;
     }
 
     public void setCurrentNumberStation(int newCurrentNumberStation) {
-        if (newCurrentNumberStation < 0) {
+        if (newCurrentNumberStation < minNumberStation) {
             return;
         }
-        if (newCurrentNumberStation > 9) {
+        if (newCurrentNumberStation > maxNumberStation) {
             return;
         }
         currentNumberStation = newCurrentNumberStation;
     }
 
+
     public void setToMaxNumberStation() {
 
-        currentNumberStation = 9;
+        currentNumberStation = maxNumberStation;
     }
 
     public void setToMinNumberStation() {
 
-        currentNumberStation = 0;
+        currentNumberStation = minNumberStation;
     }
 
     public void nextNumberStation() {
 
-        if (currentNumberStation < 9) {
+        if (currentNumberStation < maxNumberStation) {
             currentNumberStation = currentNumberStation + 1;
         } else {
-            currentNumberStation = 0;
+            currentNumberStation = minNumberStation;
         }
     }
 
     public void prevNumberStation() {
-        if (currentNumberStation > 0) {
+        if (currentNumberStation > minNumberStation) {
             currentNumberStation = currentNumberStation - 1;
         } else {
-            currentNumberStation = 9;
+            currentNumberStation = maxNumberStation;
         }
     }
 
@@ -50,10 +72,10 @@ public class Radio {
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
@@ -61,23 +83,23 @@ public class Radio {
 
     public void setToMaxVolume() {
 
-        currentVolume = 100;
+        currentVolume = maxVolume;
     }
 
     public void setToMinVolume() {
 
-        currentVolume = 0;
+        currentVolume = minVolume;
     }
 
     public void increaseVolume() {
 
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
     }

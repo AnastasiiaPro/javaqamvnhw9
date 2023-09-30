@@ -4,6 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    @Test
+    public void shouldCountStation() {
+        Radio radio = new Radio(10);
+        Assertions.assertEquals(10, radio.getCountStation());
+        Assertions.assertEquals(0, radio.getMinNumberStation());
+        Assertions.assertEquals(0, radio.getCurrentNumberStation());
+    }
 
     @Test
     public void shouldCurrentNumberStation() {
@@ -251,6 +258,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldDecreaseVolumeUpBoundary() {
         Radio radio = new Radio();
@@ -263,6 +271,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldNotIncreaseVolumeUpBoundary() {
         Radio radio = new Radio();
